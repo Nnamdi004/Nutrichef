@@ -26,9 +26,6 @@ nutrichef/
 ├── js/
 │   ├── config.js             # API configuration
 │   └── app.js                # Main application logic
-├── assets/
-│   └── images/
-│       └── logo.png          # Project logo (optional)
 ├── config/
 │   ├── nginx-site.conf       # Nginx server configuration
 │   └── haproxy.cfg           # HAProxy load balancer config
