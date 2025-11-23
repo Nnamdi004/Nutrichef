@@ -596,7 +596,7 @@ node_modules/
 
 ## 📝 License & Academic Integrity
 
-This project is created for educational purposes. All code is original work written specifically for the External API Integration & Deployment assignment.
+This project is created for educational purposes. All code is original work written specifically for the Summative.
 
 **Student**: [Nnamdi]  
 **Course**: [Web Infrastructure]  
