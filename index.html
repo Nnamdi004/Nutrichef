@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nutrichef - Recipe Search</title>
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- Link to external CSS file -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- 1. Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-brand">
+                <i class="fa-solid fa-utensils nav-logo" style="color: var(--primary);"></i>
+                Nutrichef
+            </a>
+
+            <div class="d-flex align-items-center">
+                <!-- Mobile Menu Toggle -->
+                <button class="mobile-menu-toggle" aria-label="Toggle Navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                
+                <!-- Desktop Menu & Theme Toggle -->
+                <ul class="nav-menu">
+                    <li><a href="#search" class="nav-link active">Search</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                    <li>
+                        <!-- Theme Toggle Button -->
+                        <button class="theme-toggle" aria-label="Toggle dark/light theme">
+                            <span class="theme-icon"></span>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 2. Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Discover Your Next Favorite Meal</h1>
+            <p class="hero-subtitle">
+                Explore thousands of recipes from around the world tailored to your diet and preferences.
+            </p>
+            <a href="#search" class="btn-primary" style="width: fit-content;">
+                <i class="fa-solid fa-magnifying-glass btn-icon"></i>
+                Start Cooking Today
+            </a>
+            
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number">10k+</span>
+                    <span class="stat-label">Recipes Indexed</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">4.8</span>
+                    <span class="stat-label">Average User Rating</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">50+</span>
+                    <span class="stat-label">Dietary Options</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Main Content Container -->
+    <div class="container" id="search">
+        
+        <!-- Search Form Section -->
+        <section class="search-section">
+            <header class="section-header">
+                <h2 class="section-title">Smart Recipe Finder</h2>
+                <p class="section-subtitle">Tell us what you're craving and what you need.</p>
+            </header>
+            
+            <form class="search-form">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="query">
+                            <i class="fa-solid fa-plate-wheat label-icon" style="color: var(--primary);"></i>
+                            Dish Name / Ingredient
+                        </label>
+                        <input type="text" id="query" class="form-input" placeholder="e.g., Chicken stir-fry, Pasta, Broccoli">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="cuisine">
+                            <i class="fa-solid fa-earth-americas label-icon" style="color: var(--primary);"></i>
+                            Cuisine Preference
+                        </label>
+                        <select id="cuisine" class="form-select">
+                            <option value="">Any Cuisine</option>
+                            <option value="italian">Italian</option>
+                            <option value="asian">Asian</option>
+                            <option value="mexican">Mexican</option>
+                            <option value="mediterranean">Mediterranean</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="prepTime">
+                            <i class="fa-solid fa-clock label-icon" style="color: var(--primary);"></i>
+                            Max Prep Time (Minutes)
+                        </label>
+                        <input type="number" id="prepTime" class="form-input" placeholder="e.g., 30">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="dietary-label">
+                        <i class="fa-solid fa-shield-halved label-icon" style="color: var(--primary);"></i>
+                        Dietary Filters
+                    </label>
+                    <div class="checkbox-grid">
+                        <label class="checkbox-card">
+                            <input type="checkbox" name="diet" value="vegan">
+                            <div class="checkbox-content">
+                                <i class="fa-solid fa-seedling checkbox-icon" style="color: var(--success);"></i>
+                                <span class="checkbox-label">Vegan</span>
+                            </div>
+                        </label>
+                        <label class="checkbox-card">
+                            <input type="checkbox" name="diet" value="vegetarian">
+                            <div class="checkbox-content">
+                                <i class="fa-solid fa-leaf checkbox-icon" style="color: var(--secondary);"></i>
+                                <span class="checkbox-label">Vegetarian</span>
+                            </div>
+                        </label>
+                        <label class="checkbox-card">
+                            <input type="checkbox" name="diet" value="gluten-free">
+                            <div class="checkbox-content">
+                                <i class="fa-solid fa-wheat-awn-circle-exclamation checkbox-icon" style="color: var(--warning);"></i>
+                                <span class="checkbox-label">Gluten-Free</span>
+                            </div>
+                        </label>
+                        <label class="checkbox-card">
+                            <input type="checkbox" name="diet" value="dairy-free">
+                            <div class="checkbox-content">
+                                <i class="fa-solid fa-cow checkbox-icon" style="color: var(--info);"></i>
+                                <span class="checkbox-label">Dairy-Free</span>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn-primary mt-4">
+                    <i class="fa-solid fa-magnifying-glass btn-icon"></i>
+                    Find Delicious Recipes
+                </button>
+            </form>
+        </section>
+
+        <!-- Filter & Sort Section (Mock) -->
+        <section class="filter-section">
+            <div class="filter-container">
+                <div class="filter-group">
+                    <label class="filter-label" for="sortOrder">Sort By:</label>
+                    <select id="sortOrder" class="filter-select">
+                        <option value="relevance">Relevance</option>
+                        <option value="rating">Highest Rated</option>
+                        <option value="time">Quickest</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label class="filter-label" for="maxCalories">Max Calories:</label>
+                    <input type="number" id="maxCalories" class="filter-input" placeholder="Limit (e.g., 600)">
+                </div>
+            </div>
+        </section>
+
+        <!-- Results Section (Mock) -->
+        <section class="results-section">
+            <header class="section-header" style="text-align: left; margin-bottom: 2rem;">
+                <h2 class="section-title" style="font-size: 2rem;">4 Results Found</h2>
+            </header>
+            
+            <div class="recipes-grid">
+                
+                <!-- Recipe Card 1: Summer Pasta Salad -->
+                <div class="recipe-card">
+                    <div class="recipe-image-container">
+                        <!-- Placeholder Image URL -->
+                        <img src="https://placehold.co/400x260/4ecdc4/ffffff?text=Summer+Pasta+Salad" 
+                             alt="Summer Pasta Salad" 
+                             class="recipe-image" 
+                             onerror="this.onerror=null;this.src='https://placehold.co/400x260/4ecdc4/ffffff?text=Image+Not+Found'">
+                        <div class="recipe-overlay">
+                            <span class="overlay-badge">Italian</span>
+                        </div>
+                    </div>
+                    <div class="recipe-content">
+                        <div class="recipe-header">
+                            <h3 class="recipe-title">Refreshing Summer Pasta Salad</h3>
+                            <p class="recipe-description">A light and zesty pasta salad with cherry tomatoes, basil, and a lemon-herb vinaigrette. Perfect for picnics.</p>
+                        </div>
+                        <div class="recipe-badges">
+                            <span class="badge badge-vegetarian"><i class="fa-solid fa-leaf"></i> Vegetarian</span>
+                            <span class="badge badge-quick"><i class="fa-solid fa-bolt"></i> Quick (25m)</span>
+                        </div>
+                        <div class="recipe-info">
+                            <div class="info-item"><span class="info-label">Prep Time</span><span class="info-value">25 min</span></div>
+                            <div class="info-item"><span class="info-label">Rating</span><span class="info-value">4.5 / 5</span></div>
+                        </div>
+                        <button class="btn-primary" style="width: 100%; padding: 1rem;">View Full Recipe</button>
+                    </div>
+                </div>
+
+                <!-- Recipe Card 2: Healthy Green Curry -->
+                <div class="recipe-card">
+                    <div class="recipe-image-container">
+                        <!-- Placeholder Image URL -->
+                        <img src="https://placehold.co/400x260/ff6b6b/ffffff?text=Green+Curry+with+Tofu" 
+                             alt="Green Curry with Tofu" 
+                             class="recipe-image"
+                             onerror="this.onerror=null;this.src='https://placehold.co/400x260/ff6b6b/ffffff?text=Image+Not+Found'">
+                        <div class="recipe-overlay">
+                            <span class="overlay-badge">Asian</span>
+                        </div>
+                    </div>
+                    <div class="recipe-content">
+                        <div class="recipe-header">
+                            <h3 class="recipe-title">Spicy Thai Green Curry with Tofu</h3>
+                            <p class="recipe-description">A fragrant and satisfying curry packed with vegetables and protein-rich tofu, served over jasmine rice.</p>
+                        </div>
+                        <div class="recipe-badges">
+                            <span class="badge badge-vegan"><i class="fa-solid fa-seedling"></i> Vegan</span>
+                            <span class="badge badge-healthy"><i class="fa-solid fa-heart"></i> Healthy</span>
+                        </div>
+                        <div class="recipe-info">
+                            <div class="info-item"><span class="info-label">Prep Time</span><span class="info-value">40 min</span></div>
+                            <div class="info-item"><span class="info-label">Rating</span><span class="info-value">4.9 / 5</span></div>
+                        </div>
+                        <button class="btn-primary" style="width: 100%; padding: 1rem;">View Full Recipe</button>
+                    </div>
+                </div>
+                
+                <!-- Recipe Card 3: Mediterranean Chicken Bowl -->
+                <div class="recipe-card">
+                    <div class="recipe-image-container">
+                        <!-- Placeholder Image URL -->
+                        <img src="https://placehold.co/400x260/ffe66d/2d3436?text=Mediterranean+Bowl" 
+                             alt="Mediterranean Chicken Bowl" 
+                             class="recipe-image"
+                             onerror="this.onerror=null;this.src='https://placehold.co/400x260/ffe66d/2d3436?text=Image+Not+Found'">
+                        <div class="recipe-overlay">
+                            <span class="overlay-badge">Mediterranean</span>
+                        </div>
+                    </div>
+                    <div class="recipe-content">
+                        <div class="recipe-header">
+                            <h3 class="recipe-title">Grilled Lemon Chicken & Quinoa Bowl</h3>
+                            <p class="recipe-description">A fresh, high-protein bowl featuring grilled chicken, cucumber, feta, and a light tzatziki drizzle.</p>
+                        </div>
+                        <div class="recipe-badges">
+                            <span class="badge badge-healthy"><i class="fa-solid fa-heart"></i> High Protein</span>
+                        </div>
+                        <div class="recipe-info">
+                            <div class="info-item"><span class="info-label">Prep Time</span><span class="info-value">55 min</span></div>
+                            <div class="info-item"><span class="info-label">Rating</span><span class="info-value">4.7 / 5</span></div>
+                        </div>
+                        <button class="btn-primary" style="width: 100%; padding: 1rem;">View Full Recipe</button>
+                    </div>
+                </div>
+
+                <!-- Recipe Card 4: Quick Tomato Soup -->
+                <div class="recipe-card">
+                    <div class="recipe-image-container">
+                        <!-- Placeholder Image URL -->
+                        <img src="https://placehold.co/400x260/74b9ff/ffffff?text=Creamy+Tomato+Soup" 
+                             alt="Creamy Tomato Soup" 
+                             class="recipe-image"
+                             onerror="this.onerror=null;this.src='https://placehold.co/400x260/74b9ff/ffffff?text=Image+Not+Found'">
+                        <div class="recipe-overlay">
+                            <span class="overlay-badge">Comfort</span>
+                        </div>
+                    </div>
+                    <div class="recipe-content">
+                        <div class="recipe-header">
+                            <h3 class="recipe-title">Creamy Roasted Tomato & Basil Soup</h3>
+                            <p class="recipe-description">A rich, comforting soup with roasted tomatoes and fresh basil, perfect with a grilled cheese sandwich.</p>
+                        </div>
+                        <div class="recipe-badges">
+                            <span class="badge badge-vegetarian"><i class="fa-solid fa-leaf"></i> Vegetarian</span>
+                        </div>
+                        <div class="recipe-info">
+                            <div class="info-item"><span class="info-label">Prep Time</span><span class="info-value">35 min</span></div>
+                            <div class="info-item"><span class="info-label">Rating</span><span class="info-value">4.2 / 5</span></div>
+                        </div>
+                        <button class="btn-primary" style="width: 100%; padding: 1rem;">View Full Recipe</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+    </div>
+
+    <!-- 4. Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3 class="footer-title">Nutrichef</h3>
+                <p class="footer-text">
+                    Your digital kitchen assistant. Find, plan, and cook the best meals with ease.
+                </p>
+            </div>
+            <div class="footer-section">
+                <h3 class="footer-subtitle">Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#search">Search Recipes</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3 class="footer-subtitle">Contact</h3>
+                <!-- UPDATED EMAIL -->
+                <p class="footer-text">Email: cnonugha813@gmail.com</p>
+                <!-- UPDATED PHONE NUMBER -->
+                <p class="footer-text">Phone: +2348081828281</p>
+                <p class="footer-text">Follow us on social media.</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2025 Nutrichef. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- 5. Recipe Detail Modal -->
+    <div id="recipeModal" class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-container">
+            <button class="modal-close" aria-label="Close Modal"><i class="fa-solid fa-xmark"></i></button>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <!-- Placeholder Image URL for Modal -->
+                    <img src="https://placehold.co/900x350/ff6b6b/ffffff?text=Featured+Recipe+Image" 
+                         alt="Recipe Photo" 
+                         class="modal-image" 
+                         onerror="this.onerror=null;this.src='https://placehold.co/900x350/ff6b6b/ffffff?text=Image+Not+Found'">
+                </div>
+                <div class="modal-body">
+                    <h2 class="modal-title">Spicy Thai Green Curry with Tofu</h2>
+                    <p class="recipe-description" style="margin-bottom: 2rem;">
+                        This recipe delivers authentic Thai flavor with a healthy, plant-based twist. Ready in under an hour, it's a perfect weeknight meal.
+                    </p>
+
+                    <div class="recipe-info">
+                        <div class="info-item"><span class="info-label">Prep Time</span><span class="info-value">20 min</span></div>
+                        <div class="info-item"><span class="info-label">Cook Time</span><span class="info-value">20 min</span></div>
+                        <div class="info-item"><span class="info-label">Servings</span><span class="info-value">4</span></div>
+                        <div class="info-item"><span class="info-label">Rating</span><span class="info-value">4.9 / 5</span></div>
+                    </div>
+
+                    <div class="modal-section">
+                        <h3 class="section-title-modal">
+                            <i class="fa-solid fa-carrot" style="color: var(--secondary);"></i>
+                            Ingredients
+                        </h3>
+                        <div class="ingredients-list">
+                            <div class="ingredient-item">1 tbsp coconut oil</div>
+                            <div class="ingredient-item">1 block firm tofu, cubed</div>
+                            <div class="ingredient-item">4 oz green curry paste</div>
+                            <div class="ingredient-item">1 can (13.5 oz) full-fat coconut milk</div>
+                            <div class="ingredient-item">2 cups mixed vegetables (broccoli, bell peppers)</div>
+                            <div class="ingredient-item">1/4 cup fresh basil leaves</div>
+                        </div>
+                    </div>
+
+                    <div class="modal-section">
+                        <h3 class="section-title-modal">
+                            <i class="fa-solid fa-fire" style="color: var(--primary);"></i>
+                            Instructions
+                        </h3>
+                        <div class="instructions-list">
+                            <div class="instruction-step">
+                                <span class="step-number">1</span>
+                                <p class="step-text">Heat coconut oil in a large pot or wok. Add the tofu and cook until golden brown on all sides. Remove and set aside.</p>
+                            </div>
+                            <div class="instruction-step">
+                                <span class="step-number">2</span>
+                                <p class="step-text">Add the green curry paste to the pot and sauté for 1 minute until fragrant. Pour in the coconut milk and bring to a simmer.</p>
+                            </div>
+                            <div class="instruction-step">
+                                <span class="step-number">3</span>
+                                <p class="step-text">Add mixed vegetables and simmer for 5-7 minutes until tender-crisp. Return the tofu to the pot and heat through.</p>
+                            </div>
+                            <div class="instruction-step">
+                                <span class="step-number">4</span>
+                                <p class="step-text">Stir in fresh basil leaves, season with salt and lime juice to taste, and serve immediately over rice or noodles.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-section">
+                        <h3 class="section-title-modal">
+                            <i class="fa-solid fa-chart-bar" style="color: var(--accent);"></i>
+                            Nutritional Breakdown (Per Serving)
+                        </h3>
+                        <div class="nutrition-grid">
+                            <div class="nutrition-card">
+                                <span class="nutrition-card-label">Calories</span>
+                                <span class="nutrition-card-value">450</span>
+                            </div>
+                            <div class="nutrition-card">
+                                <span class="nutrition-card-label">Protein</span>
+                                <span class="nutrition-card-value">25g</span>
+                            </div>
+                            <div class="nutrition-card">
+                                <span class="nutrition-card-label">Carbs</span>
+                                <span class="nutrition-card-value">35g</span>
+                            </div>
+                            <div class="nutrition-card">
+                                <span class="nutrition-card-label">Fat</span>
+                                <span class="nutrition-card-value">22g</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 6. JavaScript Logic -->
+    <!-- Link to external JavaScript file -->
+    <script src="app.js"></script>
+</body>
+</html>
