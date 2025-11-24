@@ -26,9 +26,6 @@ nutrichef/
 ├── js/
 │   ├── config.js             # API configuration
 │   └── app.js                # Main application logic
-├── assets/
-│   └── images/
-│       └── logo.png          # Project logo (optional)
 ├── config/
 │   ├── nginx-site.conf       # Nginx server configuration
 │   └── haproxy.cfg           # HAProxy load balancer config
@@ -140,7 +137,7 @@ const API_KEY = '1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d';
 **⚠️ Important:** Never commit your API key to public repositories!
 
 ### For Submission
-In your assignment comment section, include:
+In the assignment comment section, include:
 ```
 SPOONACULAR_API_KEY=your_actual_32_character_key_here
 ```
