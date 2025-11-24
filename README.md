@@ -1,743 +1,1284 @@
-NutriChef - Smart Recipe & Meal Planning Application
+# NutriChef - Smart Recipe & Meal Planning Application
+
+
 
 A professional web application providing access to 365,000+ recipes with complete nutritional information, dietary filtering, and meal planning capabilities powered by the Spoonacular API.
 
-📋 Table of Contents
 
-Project Structure
 
-Features
+## 📋 Table of Contents
 
-Quick Start
+- [Project Structure](#project-structure)
 
-API Key Setup
+- [Features](#features)
 
-Local Development
+- [Quick Start](#quick-start)
 
-Deployment
+- [API Key Setup](#api-key-setup)
 
-Configuration
+- [Local Development](#local-development)
 
-Testing
+- [Deployment](#deployment)
 
-Troubleshooting
+- [Configuration](#configuration)
 
-API Documentation
+- [Testing](#testing)
 
-📁 Project Structure
+- [Troubleshooting](#troubleshooting)
+
+- [API Documentation](#api-documentation)
+
+
+
+---
+
+
+
+## 📁 Project Structure
+
+
+
+```
 
 nutrichef/
-├── index.html                 # Main HTML file
+
+├── index.html                 # Main HTML file
+
 ├── css/
-│   └── style.css             # All styles (modern, responsive)
+
+│   └── style.css             # All styles (modern, responsive)
+
 ├── js/
-│   ├── config.js             # API configuration
-│   └── app.js                # Main application logic
+
+│   ├── config.js             # API configuration
+
+│   └── app.js                # Main application logic
+
 ├── config/
-│   ├── nginx-site.conf       # Nginx server configuration
-│   └── haproxy.cfg           # HAProxy load balancer config
+
+│   ├── nginx-site.conf       # Nginx server configuration
+
+│   └── haproxy.cfg           # HAProxy load balancer config
+
 ├── scripts/
-│   └── deploy.sh             # Automated deployment script
-├── .gitignore                # Git ignore file
-└── README.md                 # This file
+
+│   └── deploy.sh             # Automated deployment script
+
+├── .gitignore                # Git ignore file
+
+└── README.md                 # This file
+
+```
 
 
-✨ Features
 
-Core Functionality
+---
 
-365,000+ Recipes: Access comprehensive recipe database
 
-Nutritional Data: Complete macro/micronutrient information
 
-Smart Filtering: 
-  - 25+ cuisines (Italian, Chinese, Mexican, etc.)
-  - 6 dietary preferences (Vegan, Vegetarian, Gluten-Free, Dairy-Free, Keto, Paleo)
-  - Cooking time filtering
+## ✨ Features
 
-Interactive Sorting: By popularity, time, health score, or calories
 
-Real-time Search: Filter recipes instantly
 
-Detailed Recipe View: Ingredients, step-by-step instructions, nutrition breakdown
+### Core Functionality
 
-User Experience
+- **365,000+ Recipes**: Access comprehensive recipe database
 
-Professional, modern design with gradient animations
+- **Nutritional Data**: Complete macro/micronutrient information
 
-Fully responsive (mobile, tablet, desktop)
+- **Smart Filtering**: 
 
-Smooth transitions and hover effects
+  - 25+ cuisines (Italian, Chinese, Mexican, etc.)
 
-Modal recipe details
+  - 6 dietary preferences (Vegan, Vegetarian, Gluten-Free, Dairy-Free, Keto, Paleo)
 
-Loading states and error handling
+  - Cooking time filtering
 
-Keyboard navigation (ESC to close modals)
+- **Interactive Sorting**: By popularity, time, health score, or calories
 
-🚀 Quick Start
+- **Real-time Search**: Filter recipes instantly
 
-1. Get API Key (5 minutes)
+- **Detailed Recipe View**: Ingredients, step-by-step instructions, nutrition breakdown
 
-Visit: https://spoonacular.com/food-api
 
-Click "Get Started" → Choose FREE plan
 
-Sign up and verify email
+### User Experience
 
-Copy API key from console (32 characters)
+- Professional, modern design with gradient animations
 
-2. Setup Project
+- Fully responsive (mobile, tablet, desktop)
+
+- Smooth transitions and hover effects
+
+- Modal recipe details
+
+- Loading states and error handling
+
+- Keyboard navigation (ESC to close modals)
+
+
+
+---
+
+
+
+## 🚀 Quick Start
+
+
+
+### 1. Get API Key (5 minutes)
+
+1. Visit: https://spoonacular.com/food-api
+
+2. Click "Get Started" → Choose **FREE** plan
+
+3. Sign up and verify email
+
+4. Copy API key from console (32 characters)
+
+
+
+### 2. Setup Project
+
+```bash
 
 # Clone or download repository
+
 cd nutrichef
 
+
+
 # Configure API key in js/config.js
+
 # Replace 'YOUR_SPOONACULAR_API_KEY' with your actual key
 
+```
 
-3. Run Locally
+
+
+### 3. Run Locally
+
+```bash
 
 # Option 1: Python
+
 python3 -m http.server 8000
 
+
+
 # Option 2: Node.js
+
 npx http-server -p 8000
+
+
 
 # Option 3: Double-click index.html
 
+
+
 # Visit: http://localhost:8000
 
+```
 
-4. Test Application
 
-Search: "pasta"
 
-Cuisine: "Italian"
+### 4. Test Application
 
-Dietary: Check "Vegetarian"
+- Search: "pasta"
 
-Click "Discover Recipes"
+- Cuisine: "Italian"
 
-Click any recipe card for details
+- Dietary: Check "Vegetarian"
 
-🔑 API Key Setup
+- Click "Discover Recipes"
 
-Obtaining Your Key
+- Click any recipe card for details
 
-Free Tier Includes:
 
-150 API calls per day
 
-All endpoints access
+---
 
-Complete nutritional data
 
-No credit card required
 
-Steps:
+## 🔑 API Key Setup
 
-Go to https://spoonacular.com/food-api
 
-Sign up for free account
 
-Verify email (check spam folder)
+### Obtaining Your Key
 
-Navigate to "My Console" → "Profile"
 
-Copy your 32-character API key
 
-Example Key Format:
+**Free Tier Includes:**
+
+- 150 API calls per day
+
+- All endpoints access
+
+- Complete nutritional data
+
+- No credit card required
+
+
+
+**Steps:**
+
+1. Go to https://spoonacular.com/food-api
+
+2. Sign up for free account
+
+3. Verify email (check spam folder)
+
+4. Navigate to "My Console" → "Profile"
+
+5. Copy your 32-character API key
+
+
+
+**Example Key Format:**
+
+```
 
 1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d
 
+```
 
-Installing the Key
 
-File: js/config.js  
-Line: 3
+
+### Installing the Key
+
+
+
+**File:** `js/config.js`  
+
+**Line:** 3
+
+
+
+```javascript
 
 // BEFORE
+
 const API_KEY = 'YOUR_SPOONACULAR_API_KEY';
 
+
+
 // AFTER (with your actual key)
+
 const API_KEY = '1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d';
 
+```
 
-⚠️ Important: Never commit your API key to public repositories!
 
-For Submission
+
+**⚠️ Important:** Never commit your API key to public repositories!
+
+
+
+### For Submission
 
 In the assignment comment section, include:
 
+```
+
 SPOONACULAR_API_KEY=your_actual_32_character_key_here
 
+```
 
-💻 Local Development
 
-Requirements
 
-Modern browser (Chrome, Firefox, Safari, Edge)
+---
 
-Text editor (VS Code recommended)
 
-HTTP server (Python, Node.js, or Live Server)
 
-File Structure Explained
+## 💻 Local Development
 
-index.html
 
-Main HTML structure
 
-Semantic markup
+### Requirements
 
-Navigation, search form, results section
+- Modern browser (Chrome, Firefox, Safari, Edge)
 
-Recipe modal
+- Text editor (VS Code recommended)
 
-Footer
+- HTTP server (Python, Node.js, or Live Server)
 
-css/style.css
 
-CSS variables for theming
 
-Responsive grid layouts
+### File Structure Explained
 
-Animations and transitions
 
-Mobile-first design
 
-Cross-browser compatibility
+**index.html**
 
-js/config.js
+- Main HTML structure
 
-API key storage
+- Semantic markup
 
-API endpoints configuration
+- Navigation, search form, results section
 
-App settings
+- Recipe modal
 
-js/app.js
+- Footer
 
-Event handlers
 
-API calls
 
-DOM manipulation
+**css/style.css**
 
-Recipe display logic
+- CSS variables for theming
 
-Modal management
+- Responsive grid layouts
 
-Development Workflow
+- Animations and transitions
 
-Edit files in your text editor
+- Mobile-first design
 
-Refresh browser to see changes
+- Cross-browser compatibility
 
-Use browser DevTools (F12) for debugging
 
-Check console for errors
 
-Test responsive design (Ctrl+Shift+M in Chrome)
+**js/config.js**
 
-🌐 Deployment
+- API key storage
 
-Architecture
+- API endpoints configuration
+
+- App settings
+
+
+
+**js/app.js**
+
+- Event handlers
+
+- API calls
+
+- DOM manipulation
+
+- Recipe display logic
+
+- Modal management
+
+
+
+### Development Workflow
+
+1. Edit files in your text editor
+
+2. Refresh browser to see changes
+
+3. Use browser DevTools (F12) for debugging
+
+4. Check console for errors
+
+5. Test responsive design (Ctrl+Shift+M in Chrome)
+
+
+
+---
+
+
+
+## 🌐 Deployment
+
+
+
+### Architecture
+
+```
 
 Internet → Load Balancer (HAProxy) → Web01 (Nginx)
-                                    → Web02 (Nginx)
+
+                                    → Web02 (Nginx)
+
+```
 
 
-Server Information
 
-Web01 (6615-web-01): 18.205.161.238
+### Server Information
 
-Web02 (6615-web-02): 52.90.56.75
+- **Web01**: 18.205.161.238
 
-Load Balancer (6615-lb-01): 44.211.210.132
+- **Web02**: 52.90.56.75
 
-Deploy to Web01
+- **Load Balancer**: 44.211.210.132
+
+
+
+### Deploy to Web01
+
+
+
+```bash
 
 # SSH into server
+
 ssh ubuntu@18.205.161.238
+
 
 # Install Nginx
+
 sudo apt update && sudo apt install nginx -y
 
+
+
 # Create application directory
+
 sudo mkdir -p /var/www/nutrichef
+
 sudo chown -R $USER:$USER /var/www/nutrichef
 
+
+
 # Exit to copy files
+
 exit
+
+
 
 # Copy files from local machine
+
 scp index.html ubuntu@18.205.161.238:/var/www/nutrichef/
+
 scp css/style.css ubuntu@18.205.161.238:/var/www/nutrichef/css/
+
 scp js/config.js ubuntu@18.205.161.238:/var/www/nutrichef/js/
+
 scp js/app.js ubuntu@18.205.161.238:/var/www/nutrichef/js/
 
+
+
 # Copy Nginx config
+
 scp config/nginx-site.conf ubuntu@18.205.161.238:/tmp/
 
+
+
 # SSH back and configure
+
 ssh ubuntu@18.205.161.238
+
 sudo mv /tmp/nginx-site.conf /etc/nginx/sites-available/nutrichef
+
 sudo ln -s /etc/nginx/sites-available/nutrichef /etc/nginx/sites-enabled/
+
 sudo rm /etc/nginx/sites-enabled/default
+
 sudo nginx -t
+
 sudo systemctl restart nginx
+
 sudo systemctl enable nginx
+
 exit
 
+```
 
-Deploy to Web02
+
+
+### Deploy to Web02
 
 Repeat the same steps but use:
 
+```bash
+
 ssh ubuntu@52.90.56.75
 
+```
 
-Configure Load Balancer
+
+
+### Configure Load Balancer
+
+
+
+```bash
 
 # SSH into load balancer
+
 ssh ubuntu@44.211.210.132
+
+
 
 # Install HAProxy
+
 sudo apt update && sudo apt install haproxy -y
 
+
+
 # Copy configuration
-scp config/haproxy.cfg ubuntu@44.211.210.132:/tmp/
+
+scp config/haproxy.cfg ubuntu@544.211.210.132:/tmp/
+
+
 
 # Apply configuration
+
 ssh ubuntu@44.211.210.132
+
 sudo mv /tmp/haproxy.cfg /etc/haproxy/haproxy.cfg
+
 sudo systemctl restart haproxy
+
 sudo systemctl enable haproxy
+
 exit
 
+```
 
-Verify Deployment
+
+
+### Verify Deployment
+
+
+
+```bash
 
 # Test individual servers
-curl -I [http://18.205.161.238](http://18.205.161.238)
-curl -I [http://52.90.56.75](http://52.90.56.75)
+
+curl -I http://18.205.161.238
+
+curl -I http://	52.90.56.75
+
+
 
 # Test load balancer
-curl -I [http://44.211.210.132](http://44.211.210.132)
+
+curl -I http://44.211.210.132
+
+
 
 # View HAProxy stats
-# Open browser: [http://44.211.210.132:8080/haproxy?stats](http://44.211.210.132:8080/haproxy?stats)
+
+# Open browser: http://44.211.210.132:8080/haproxy?stats
+
 # Username: admin, Password: nutrichef2024
 
+```
 
-Automated Deployment
+
+
+### Automated Deployment
+
+
 
 Use the provided deployment script:
 
+```bash
+
 chmod +x scripts/deploy.sh
+
 ./scripts/deploy.sh
 
+```
 
-⚙️ Configuration
 
-Nginx Configuration (config/nginx-site.conf)
+
+---
+
+
+
+## ⚙️ Configuration
+
+
+
+### Nginx Configuration (`config/nginx-site.conf`)
+
+```nginx
 
 server {
-    listen 80;
-    server_name _;
-    root /var/www/nutrichef;
-    index index.html;
-    
-    location / {
-        try_files $uri $uri/ =404;
-    }
-    
-    # Gzip compression enabled
-    # Security headers added
-    # Static asset caching configured
+
+    listen 80;
+
+    server_name _;
+
+    root /var/www/nutrichef;
+
+    index index.html;
+
+    
+
+    location / {
+
+        try_files $uri $uri/ =404;
+
+    }
+
+    
+
+    # Gzip compression enabled
+
+    # Security headers added
+
+    # Static asset caching configured
+
 }
 
+```
 
-HAProxy Configuration (config/haproxy.cfg)
+
+
+### HAProxy Configuration (`config/haproxy.cfg`)
+
+```haproxy
 
 frontend nutrichef_frontend
-    bind *:80
-    default_backend nutrichef_servers
+
+    bind *:80
+
+    default_backend nutrichef_servers
+
+
 
 backend nutrichef_servers
-    balance roundrobin
-    option httpchk GET /
-    server web01 18.205.161.238:80 check
-    server web02 52.90.56.75:80 check
+
+    balance roundrobin
+
+    option httpchk GET /
+
+    server web01 18.205.161.238 check
+
+    server web02 52.90.56.75 check
+
+
 
 listen stats
-    bind *:8080
-    stats enable
-    stats uri /haproxy?stats
-    stats auth admin:nutrichef2024
+
+    bind *:8080
+
+    stats enable
+
+    stats uri /haproxy?stats
+
+    stats auth admin:nutrichef2024
+
+```
 
 
-🧪 Testing
 
-Functional Testing
+---
 
-Test 1: Basic Search
+
+
+## 🧪 Testing
+
+
+
+### Functional Testing
+
+
+
+**Test 1: Basic Search**
+
+```
 
 Query: pasta
+
 Expected: 12 pasta recipes displayed
 
+```
 
-Test 2: Filtered Search
+
+
+**Test 2: Filtered Search**
+
+```
 
 Query: chicken
+
 Cuisine: Asian
+
 Time: 30 minutes
+
 Dietary: Gluten Free
+
 Expected: Quick Asian chicken recipes
 
+```
 
-Test 3: Sorting
+
+
+**Test 3: Sorting**
+
+```
 
 Change sort dropdown
+
 Expected: Cards reorder appropriately
 
+```
 
-Test 4: Recipe Details
+
+
+**Test 4: Recipe Details**
+
+```
 
 Click any recipe card
+
 Expected: Modal with ingredients, instructions, nutrition
 
+```
 
-Load Balancer Testing
+
+
+### Load Balancer Testing
+
+
+
+```bash
 
 # Test traffic distribution
+
 for i in {1..10}; do
-    curl -s [http://44.211.210.132](http://44.211.210.132) | head -n 1
+
+    curl -s http://54.236.50.227 | head -n 1
+
 done
 
+
+
 # Monitor server logs
-ssh ubuntu@18.205.161.238
+
+ssh ubuntu@44.211.210.132
 sudo tail -f /var/log/nginx/access.log
 
+```
 
-Failover Testing
+
+
+### Failover Testing
+
+
+
+```bash
 
 # Stop Web01
+
 ssh ubuntu@18.205.161.238
+
 sudo systemctl stop nginx
+
 exit
 
+
+
 # Verify load balancer still works
-curl -I [http://44.211.210.132](http://44.211.210.132)
+
+curl -I http:/44.211.210.132
+
+
 
 # Check HAProxy stats (Web01 should be DOWN, Web02 UP)
 
+
+
 # Restart Web01
+
 ssh ubuntu@18.205.161.238
+
 sudo systemctl start nginx
 
+```
 
-🐛 Troubleshooting
 
-API Key Issues
 
-Problem: 401 Unauthorized  
-Solution: 
+---
 
-Verify API key is correct (32 characters)
 
-Check for typos
 
-Ensure email is verified
+## 🐛 Troubleshooting
 
-Wait 10 minutes after registration
 
-Problem: 402 Payment Required  
-Solution: Daily quota exceeded, wait until midnight UTC
 
-Deployment Issues
+### API Key Issues
 
-Problem: 404 Not Found on server  
-Solution:
+
+
+**Problem**: 401 Unauthorized  
+
+**Solution**: 
+
+- Verify API key is correct (32 characters)
+
+- Check for typos
+
+- Ensure email is verified
+
+- Wait 10 minutes after registration
+
+
+
+**Problem**: 402 Payment Required  
+
+**Solution**: Daily quota exceeded, wait until midnight UTC
+
+
+
+### Deployment Issues
+
+
+
+**Problem**: 404 Not Found on server  
+
+**Solution**:
+
+```bash
 
 # Check file location
+
 ssh ubuntu@18.205.161.238
+
 ls -la /var/www/nutrichef/
 
+
+
 # Verify Nginx config
+
 sudo nginx -t
 
+
+
 # Check logs
+
 sudo tail -f /var/log/nginx/error.log
 
+```
 
-Problem: HAProxy shows servers DOWN  
-Solution:
+
+
+**Problem**: HAProxy shows servers DOWN  
+
+**Solution**:
+
+```bash
 
 # Test servers directly
-curl -I [http://18.205.161.238](http://18.205.161.238)
+
+curl -I http://18.205.161.238
+
+
 
 # Restart HAProxy
+
 ssh ubuntu@44.211.210.132
+
 sudo systemctl restart haproxy
 
+```
 
-Application Issues
 
-Problem: No results displayed  
-Solution:
 
-Open browser console (F12)
+### Application Issues
 
-Check for API errors
 
-Verify API key in config.js
 
-Try broader search terms
+**Problem**: No results displayed  
 
-Problem: Slow loading  
-Solution:
+**Solution**:
 
-Reduce number of results in config.js
+- Open browser console (F12)
 
-Check network connection
+- Check for API errors
 
-Clear browser cache
+- Verify API key in config.js
 
-📚 API Documentation
+- Try broader search terms
 
-Spoonacular API
 
-Base URL: https://api.spoonacular.com
 
-Endpoints Used
+**Problem**: Slow loading  
 
-1. Complex Recipe Search
+**Solution**:
+
+- Reduce number of results in config.js
+
+- Check network connection
+
+- Clear browser cache
+
+
+
+---
+
+
+
+## 📚 API Documentation
+
+
+
+### Spoonacular API
+
+
+
+**Base URL**: `https://api.spoonacular.com`
+
+
+
+### Endpoints Used
+
+
+
+#### 1. Complex Recipe Search
+
+```
 
 GET /recipes/complexSearch
 
+```
 
-Parameters:
 
-apiKey (required): Your API key
 
-query (required): Search term
+**Parameters**:
 
-cuisine: Cuisine type
+- `apiKey` (required): Your API key
 
-diet: Dietary restriction
+- `query` (required): Search term
 
-maxReadyTime: Max cooking time
+- `cuisine`: Cuisine type
 
-number: Results count (default: 10)
+- `diet`: Dietary restriction
 
-addRecipeInformation: true/false
+- `maxReadyTime`: Max cooking time
 
-addRecipeNutrition: true/false
+- `number`: Results count (default: 10)
 
-Example:
+- `addRecipeInformation`: true/false
+
+- `addRecipeNutrition`: true/false
+
+
+
+**Example**:
+
+```javascript
 
 const url = `https://api.spoonacular.com/recipes/complexSearch?apiKey=YOUR_KEY&query=pasta&cuisine=italian&diet=vegetarian&maxReadyTime=45&number=12&addRecipeInformation=true&addRecipeNutrition=true`;
 
+```
 
-2. Get Recipe Information
+
+
+#### 2. Get Recipe Information
+
+```
 
 GET /recipes/{id}/information
 
+```
 
-Parameters:
 
-apiKey (required): Your API key
 
-id (required): Recipe ID
+**Parameters**:
 
-includeNutrition: true/false
+- `apiKey` (required): Your API key
 
-Rate Limits
+- `id` (required): Recipe ID
 
-Free Tier: 150 calls/day
+- `includeNutrition`: true/false
 
-Resets: Midnight UTC
 
-Per request: No limit
 
-Error Codes
+### Rate Limits
 
-200: Success
+- **Free Tier**: 150 calls/day
 
-401: Invalid API key
+- **Resets**: Midnight UTC
 
-402: Quota exceeded
+- **Per request**: No limit
 
-404: Recipe not found
 
-429: Rate limit exceeded
 
-Official Resources
+### Error Codes
 
-Documentation: https://spoonacular.com/food-api/docs
+- **200**: Success
 
-Console: https://spoonacular.com/food-api/console
+- **401**: Invalid API key
 
-Pricing: https://spoonacular.com/food-api/pricing
+- **402**: Quota exceeded
 
-📊 Project Requirements Met
+- **404**: Recipe not found
 
-✅ Functionality
+- **429**: Rate limit exceeded
 
-Uses Spoonacular API (complex food/nutrition data)
 
-Provides genuine value (meal planning, dietary needs)
 
-Not a gimmick (solves real health/time/budget problems)
+### Official Resources
 
-Advanced user interaction (sort, filter, search, modal views)
+- Documentation: https://spoonacular.com/food-api/docs
 
-✅ Deployment
+- Console: https://spoonacular.com/food-api/console
 
-Deployed to Web01 (18.205.161.238)
+- Pricing: https://spoonacular.com/food-api/pricing
 
-Deployed to Web02 (52.90.56.75)
 
-HAProxy load balancer configured (44.211.210.132)
 
-Round-robin distribution with health checks
+---
 
-Failover tested and working
 
-✅ User Experience
 
-Professional, modern design
+## 📊 Project Requirements Met
 
-Fully responsive (mobile, tablet, desktop)
 
-Intuitive navigation
 
-Clear data presentation
+### ✅ Functionality
 
-Fast loading times
+- Uses Spoonacular API (complex food/nutrition data)
 
-✅ Documentation
+- Provides genuine value (meal planning, dietary needs)
 
-Comprehensive README
+- Not a gimmick (solves real health/time/budget problems)
 
-Clear setup instructions
+- Advanced user interaction (sort, filter, search, modal views)
 
-Deployment guide
 
-API documentation
 
-Troubleshooting section
+### ✅ Deployment
 
-✅ Code Quality
+- Deployed to Web01 (18.205.161.238)
 
-Separated HTML, CSS, JavaScript
+- Deployed to Web02 (52.90.56.75)
 
-Clean, readable code
+- HAProxy load balancer configured (44.211.210.132)
 
-Proper error handling
+- Round-robin distribution with health checks
 
-Modern best practices
+- Failover tested and working
 
-Security considerations
 
-100% original work
 
-🔒 Security & Best Practices
+### ✅ User Experience
 
-API Key Security
+- Professional, modern design
 
-Never commit API keys to GitHub
+- Fully responsive (mobile, tablet, desktop)
 
-Use .gitignore to exclude config files
+- Intuitive navigation
 
-For production: use environment variables or backend proxy
+- Clear data presentation
 
-.gitignore
+- Fast loading times
+
+
+
+### ✅ Documentation
+
+- Comprehensive README
+
+- Clear setup instructions
+
+- Deployment guide
+
+- API documentation
+
+- Troubleshooting section
+
+
+
+### ✅ Code Quality
+
+- Separated HTML, CSS, JavaScript
+
+- Clean, readable code
+
+- Proper error handling
+
+- Modern best practices
+
+- Security considerations
+
+- 100% original work
+
+
+
+---
+
+
+
+
+
+## 🔒 Security & Best Practices
+
+
+
+### API Key Security
+
+- Never commit API keys to GitHub
+
+- Use .gitignore to exclude config files
+
+- For production: use environment variables or backend proxy
+
+
+
+### .gitignore
+
+```
 
 # API Keys
+
 js/config.js
+
 *.env
+
 secrets.json
 
+
+
 # OS Files
+
 .DS_Store
+
 Thumbs.db
 
+
+
 # Logs
+
 *.log
 
+
+
 # Dependencies
+
 node_modules/
 
+```
 
-Production Recommendations
 
-Implement backend API proxy
 
-Enable HTTPS/SSL
+### Production Recommendations
 
-Add rate limiting
+1. Implement backend API proxy
 
-Implement caching (Redis)
+2. Enable HTTPS/SSL
 
-Use CDN for static assets
+3. Add rate limiting
 
-🙏 Credits
+4. Implement caching (Redis)
 
-API: Spoonacular Food & Nutrition API (https://spoonacular.com)  
-Web Server: Nginx (https://nginx.org)  
-Load Balancer: HAProxy (http://www.haproxy.org)  
-Icons: Unicode Emoji
+5. Use CDN for static assets
 
-📝 License & Academic Integrity
+
+
+---
+
+
+
+## 🙏 Credits
+
+
+
+**API**: Spoonacular Food & Nutrition API (https://spoonacular.com)  
+
+**Web Server**: Nginx (https://nginx.org)  
+
+**Load Balancer**: HAProxy (http://www.haproxy.org)  
+
+**Icons**: Unicode Emoji
+
+
+
+---
+
+
+
+## 📝 License & Academic Integrity
+
+
 
 This project is created for educational purposes. All code is original work written specifically for the Summative.
 
-Student: [Nnamdi]  
-Course: [Web Infrastructure]  
-Institution: [African Leadership University]  
-Date: [24/11/25]
 
-📞 Support
+
+**Student**: [Nnamdi]  
+
+**Course**: [Web Infrastructure]  
+
+**Institution**: [African Leadership University]  
+
+**Date**: [24/11/25]
+
+
+
+---
+
+
+
+## 📞 Support
+
+
 
 For questions or issues:
 
-Review this documentation
+1. Review this documentation
 
-Check troubleshooting section
+2. Check troubleshooting section
 
-Verify API key configuration
+3. Verify API key configuration
 
-Test with sample searches
+4. Test with sample searches
 
-Check browser console for errors
+5. Check browser console for errors
 
-🚀 Quick Reference Commands
+
+
+---
+
+
+## 🚀 Quick Reference Commands
+
+
+
+```bash
 
 # Local Development
+
 python3 -m http.server 8000
 
+
+
 # Deploy Web01
+
 scp -r * ubuntu@18.205.161.238:/var/www/nutrichef/
 
+
+
 # Deploy Web02
+
 scp -r * ubuntu@52.90.56.75:/var/www/nutrichef/
 
+
+
 # Test Servers
-curl -I [http://18.205.161.238](http://18.205.161.238)
-curl -I [http://52.90.56.75](http://52.90.56.75)
-curl -I [http://44.211.210.132](http://44.211.210.132)
+
+curl -I http://18.205.161.238
+
+curl -I http://52.90.56.75
+
+curl -I http://44.211.210.132
+
+
 
 # View Logs
+
 sudo tail -f /var/log/nginx/access.log
+
 sudo tail -f /var/log/haproxy.log
 
+
+
 # Restart Services
+
 sudo systemctl restart nginx
+
 sudo systemctl restart haproxy
 
+```
 
-Made by Chibueze Nnamdi Onugha
+
+
+---
+
+
+
+**Made by Chibueze Nnamdi Onugha**
