@@ -12,12 +12,25 @@ YELLOW='\033[1;33m'
 BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
-# Server Configuration
-WEB01_IP="54.90.50.233"
-WEB02_IP="100.26.232.98"
-LB_IP="54.236.50.227"
+# Server Configuration - UPDATED IP ADDRESSES
+WEB01_IP="18.205.161.238"
+WEB02_IP="52.90.56.75"
+LB_IP="44.211.210.132"
 SSH_USER="ubuntu"
 APP_DIR="/var/www/nutrichef"
+
+# SSH Key Configuration (uncomment and set if using PEM file)
+# SSH_KEY="/root/.ssh/your-key.pem"
+SSH_KEY=""
+
+# Build SSH/SCP options
+if [ -n "$SSH_KEY" ]; then
+    SSH_OPTS="-i $SSH_KEY -o StrictHostKeyChecking=no"
+    SCP_OPTS="-i $SSH_KEY -o StrictHostKeyChecking=no"
+else
+    SSH_OPTS="-o StrictHostKeyChecking=no"
+    SCP_OPTS="-o StrictHostKeyChecking=no"
+fi
 
 echo -e "${BLUE}╔════════════════════════════════════════╗${NC}"
 echo -e "${BLUE}║   NutriChef Deployment Script         ║${NC}"
@@ -40,23 +53,23 @@ deploy_to_server() {
     echo -e "${BLUE}→ Deploying to ${SERVER_NAME} (${SERVER_IP})...${NC}"
     
     # Create directory structure
-    ssh ${SSH_USER}@${SERVER_IP} << 'ENDSSH'
+    ssh $SSH_OPTS ${SSH_USER}@${SERVER_IP} << 'ENDSSH'
         sudo mkdir -p /var/www/nutrichef/{css,js}
         sudo chown -R $USER:$USER /var/www/nutrichef
 ENDSSH
     
     # Copy files
     echo "  Copying files..."
-    scp index.html ${SSH_USER}@${SERVER_IP}:${APP_DIR}/
-    scp css/style.css ${SSH_USER}@${SERVER_IP}:${APP_DIR}/css/
-    scp js/config.js ${SSH_USER}@${SERVER_IP}:${APP_DIR}/js/
-    scp js/app.js ${SSH_USER}@${SERVER_IP}:${APP_DIR}/js/
+    scp $SCP_OPTS index.html ${SSH_USER}@${SERVER_IP}:${APP_DIR}/
+    scp $SCP_OPTS css/style.css ${SSH_USER}@${SERVER_IP}:${APP_DIR}/css/
+    scp $SCP_OPTS js/config.js ${SSH_USER}@${SERVER_IP}:${APP_DIR}/js/
+    scp $SCP_OPTS js/app.js ${SSH_USER}@${SERVER_IP}:${APP_DIR}/js/
     
     # Configure Nginx
     echo "  Configuring Nginx..."
-    scp config/nginx-site.conf ${SSH_USER}@${SERVER_IP}:/tmp/
+    scp $SCP_OPTS config/nginx-site.conf ${SSH_USER}@${SERVER_IP}:/tmp/
     
-    ssh ${SSH_USER}@${SERVER_IP} << 'ENDSSH'
+    ssh $SSH_OPTS ${SSH_USER}@${SERVER_IP} << 'ENDSSH'
         # Install Nginx if needed
         if ! command -v nginx &> /dev/null; then
             sudo apt update && sudo apt install nginx -y
@@ -85,9 +98,9 @@ deploy_to_server ${WEB02_IP} "Web02"
 # Configure Load Balancer
 echo -e "${BLUE}→ Configuring Load Balancer (${LB_IP})...${NC}"
 
-scp config/haproxy.cfg ${SSH_USER}@${LB_IP}:/tmp/
+scp $SCP_OPTS config/haproxy.cfg ${SSH_USER}@${LB_IP}:/tmp/
 
-ssh ${SSH_USER}@${LB_IP} << 'ENDSSH'
+ssh $SSH_OPTS ${SSH_USER}@${LB_IP} << 'ENDSSH'
     # Install HAProxy if needed
     if ! command -v haproxy &> /dev/null; then
         sudo apt update && sudo apt install haproxy -y
